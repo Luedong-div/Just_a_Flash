@@ -1,0 +1,1 @@
+import{_status as t,game as e,lib as r}from"noname";export default{rawAttitude(t,e){const r="zhong"==e.identity?5:6;return t.side===e.side?r:-r},currentLevelDifficulty:()=>t.millenDreamStartInfo?.difficulty||null};

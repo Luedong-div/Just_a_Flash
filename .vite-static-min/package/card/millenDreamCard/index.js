@@ -1,0 +1,1 @@
+import{millenDreamCard_equip as e,millenDreamCard_equipSkill as a,millenDreamCard_equipTranslate as l}from"./equip.js";export default{name:"millenDreamCard",connect:!0,list:[],skill:{...a},card:{...e},translate:{...l}};

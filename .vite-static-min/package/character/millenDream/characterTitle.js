@@ -1,0 +1,1 @@
+const a={jaf_grass:"生生不息"};for(const s in a)a[s]=`<span class="jaf-character-title">${a[s]}</span>`;export default a;
