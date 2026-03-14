@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from "node:url";
 import { cp, mkdir, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import writeFilePlugin from "./vite-plugins/vite-write-file-plugin.js";
@@ -58,6 +59,7 @@ export default defineConfig(({ command, mode }) => {
 
 	return {
 		plugins: [
+			vue(),
 			// 先删除 dist/extension（如果构建时残留），再执行其它复制/拷贝行为
 			// 方便测试
 			writeFilePlugin(),
@@ -86,7 +88,7 @@ export default defineConfig(({ command, mode }) => {
 			rollupOptions: {
 				// ensure entry signatures are preserved when using preserveModules
 				preserveEntrySignatures: "strict",
-				external: ["noname"],
+				external: id => id === "noname" || id === "vue" || id.startsWith("@vue/"),
 				// use the real source entry so Rollup emits it as `dist/extension.js`
 				input: { extension: resolve(currentDir, "src/extension.js") },
 				output: {
