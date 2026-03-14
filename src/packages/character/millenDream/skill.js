@@ -1,3 +1,5 @@
+import { _status, game, lib, get } from "noname";
+
 /** @type { importCharacterConfig['skill'] } */
 const skills = {
 	jaf_pyrophobia: {
@@ -37,6 +39,18 @@ const skills = {
 		async content(event, trigger, player) {
 			player.awakenSkill("jaf_realMe");
 			player.addSkills(get.gainableSkills().randomGets(2));
+		},
+	},
+	jaf_slippery: {
+		trigger: {
+			target: "useCardToTargeted",
+		},
+		filter(event, player) {
+			return get.effect(player, event.card, event.player, player) < 0 && Math.random() < 0.3;
+		},
+		forced: true,
+		async content(event, trigger, player) {
+			trigger.getParent().excluded.add(player);
 		},
 	},
 };

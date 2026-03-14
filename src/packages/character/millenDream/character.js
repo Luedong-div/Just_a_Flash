@@ -2,6 +2,12 @@ import { basic } from "@/source/basic";
 
 /** @type { importCharacterConfig['character'] } */
 const characters = {
+	jaf_youth: {
+		sex: "male",
+		hp: 4,
+		maxHp: 4,
+		skills: ["jaf_realMe"],
+	},
 	jaf_grass: {
 		sex: "none",
 		hp: 3,
@@ -9,11 +15,11 @@ const characters = {
 		skills: ["jaf_vitality", "jaf_pyrophobia"],
 		vegetation: true,
 	},
-	jaf_youth: {
-		sex: "male",
-		hp: 4,
-		maxHp: 4,
-		skills: ["jaf_realMe"],
+	jaf_smallFish: {
+		sex: "none",
+		hp: 2,
+		maxHp: 2,
+		skills: ["jaf_slippery"],
 	},
 };
 for (const name in characters) {
