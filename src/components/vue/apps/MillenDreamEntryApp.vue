@@ -150,8 +150,8 @@
 							{{ category.name }}
 						</button>
 					</div>
-					<div class="jaf-inventory-items-panel">
-						<div class="jaf-inventory-items-grid">
+					<div class="jaf-items-panel">
+						<div class="jaf-items-grid">
 							<template v-if="filteredInventoryItems.length">
 								<article v-for="item in filteredInventoryItems" :key="item.id" class="jaf-item-card" @click="openInventoryDetail(item)">
 									<div class="jaf-item-link">
@@ -189,9 +189,9 @@
 							{{ category.name }}
 						</button>
 					</div>
-					<div class="jaf-shop-goods-panel">
+					<div class="jaf-items-panel">
 						<h3 class="jaf-shop-goods-title">{{ currentShopTitle }}</h3>
-						<div class="jaf-shop-goods-list">
+						<div class="jaf-items-grid">
 							<template v-if="isGachaCategory">
 								<article v-for="pool in filteredGachaPools" :key="pool.id" class="jaf-item-card jaf-item-card-gacha" @click="openGachaPool(pool)">
 									<div class="jaf-item-link">
@@ -229,7 +229,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
 import { _status, get, lib, ui } from "noname";
-import "../../../assets/css/mode/style.css";
+import "./style.css";
 
 const props = defineProps({
 	ctx: {

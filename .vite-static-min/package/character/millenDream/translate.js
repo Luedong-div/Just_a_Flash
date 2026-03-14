@@ -1,1 +1,0 @@
-import{get as a}from"noname";export default{jaf_grass:"小草",jaf_pyrophobia:"惧火",jaf_pyrophobia_info:"锁定技，你受到的火焰伤害+1。",jaf_vitality:"生机",jaf_vitality_info:"锁定技，每回合结束，你回复一点体力。"};

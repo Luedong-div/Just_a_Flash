@@ -1,1 +1,0 @@
-import{_status as e,game as o,lib as r}from"noname";export default{player:{}};

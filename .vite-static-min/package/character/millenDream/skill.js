@@ -1,1 +1,0 @@
-import{lib as e,game as r,ui as t,get as a,ai as o,_status as n}from"noname";const i={jaf_pyrophobia:{forced:!0,filter:e=>e.hasNature("fire"),trigger:{player:"damageBegin2"},async content(e,r){r.num++}},jaf_vitality:{forced:!0,trigger:{global:"phaseEnd"},filter:(e,r)=>r.isDamaged(),async content(e,r,t){t.recover()}}};export default i;
