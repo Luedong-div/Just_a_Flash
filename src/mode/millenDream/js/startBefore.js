@@ -510,7 +510,7 @@ const assetHelpers = {
 		if (customActions.length) {
 			const buttons = customActions.map(action => {
 				const btn = createElement("button", {
-					className: `jaf-intro-btn jaf-intro-action-btn ${action.className || ""}`.trim(),
+					className: action.className || "jaf-game-btn",
 					text: action.label,
 					attrs: { type: "button" },
 				});
@@ -788,7 +788,7 @@ const assetHelpers = {
 		if (customActions.length) {
 			const buttons = customActions.map(action => {
 				const btn = createElement("button", {
-					className: `jaf-intro-btn ${action.className || ""}`.trim(),
+					className: action.className || "jaf-game-btn",
 					text: action.label,
 					attrs: { type: "button" },
 				});

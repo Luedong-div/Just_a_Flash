@@ -180,6 +180,10 @@ const CHAPTERS = {
 						3: {
 							bossInfo: {
 								id: "jaf_scarecrow",
+								expand: {
+									maxHp: 4,
+									hujia: 2,
+								},
 								minions: [
 									{
 										seat: 2,
@@ -204,6 +208,9 @@ const CHAPTERS = {
 							},
 						},
 					},
+				},
+				reward: {
+					currency: "eyJtZW1vcnlaaHUiOls1LDIwXSwiZHJlYW1EaWFuIjpbMSwyXSwiamlhbmdGdSI6WzcsMTJdfQ==|-1dc2972a",
 				},
 			},
 			c1l4: {

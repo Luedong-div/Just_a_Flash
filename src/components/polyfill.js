@@ -84,7 +84,7 @@ function ensureCheatButtonWatcherInstalled() {
 
 export { encryptConfig, decryptAndVerifyConfig, ensureCheatButtonWatcherInstalled };
 
-// { memoryZhu: [ 1, 10 ], dreamDian: 1, jiangFu: [ 1, 5 ] }
+// { memoryZhu: [ 5, 20 ], dreamDian: [1, 2], jiangFu: [7, 12] }
 
-console.log(encryptConfig({ dreamDian: 2000 }, "shaonian"));
+console.log(encryptConfig({ memoryZhu: [5, 20], dreamDian: [1, 2], jiangFu: [7, 12] }, "shaonian"));
 // console.log(decryptAndVerifyConfig("eyJkcmVhbURpYW4iOjV9|293f687f", "shaonian"));

@@ -1087,7 +1087,7 @@ async function openGachaPool(pool) {
 			poolName: pool.name,
 			results: result.results,
 			isTen: drawCount === 10,
-			actionButtons: drawCount === 10 ? [{ label: "再来十抽", onClick: () => draw(10), className: "is-primary" }] : [{ label: "再来一抽", onClick: () => draw(1), className: "is-primary" }],
+			actionButtons: drawCount === 10 ? [{ label: "再来十抽", onClick: () => draw(10), className: "jaf-game-btn" }] : [{ label: "再来一抽", onClick: () => draw(1), className: "jaf-game-btn" }],
 		});
 		return true;
 	};
@@ -1101,8 +1101,8 @@ async function openGachaPool(pool) {
 			image: pool.image,
 		},
 		actionButtons: [
-			{ label: `单抽（实付 ${single.finalMemoryCost} 忆铢）`, onClick: () => draw(1) },
-			{ label: `十连（实付 ${ten.finalMemoryCost} 忆铢）`, onClick: () => draw(10) },
+			{ label: `单抽（实付 ${single.finalMemoryCost} 忆铢）`, onClick: () => draw(1), className: "jaf-game-btn jaf-gacha-btn" },
+			{ label: `十连（实付 ${ten.finalMemoryCost} 忆铢）`, onClick: () => draw(10), className: "jaf-game-btn jaf-gacha-btn" },
 		],
 	});
 }
