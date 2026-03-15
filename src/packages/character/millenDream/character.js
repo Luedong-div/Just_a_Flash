@@ -21,6 +21,18 @@ const characters = {
 		maxHp: 2,
 		skills: ["jaf_slippery"],
 	},
+	jaf_scarecrow: {
+		sex: "none",
+		hp: 2,
+		maxHp: 2,
+		skills: ["jaf_tricky"],
+	},
+	jaf_dragonfly: {
+		sex: "none",
+		hp: 2,
+		maxHp: 2,
+		skills: ["jaf_fly"],
+	},
 };
 for (const name in characters) {
 	characters[name].group = "jaf_dream";

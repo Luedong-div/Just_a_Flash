@@ -2,7 +2,6 @@ import { decryptAndVerifyConfig } from "../../../components/polyfill.js";
 const SHOP_TEST_IMAGE = `extension/忽然而已/assets/image/mode/millenDream/test.jpg`;
 /** @type {import('../../../../types/SHOP_DATA.js').ShopConfig} */
 
-// TODO 商品 good key改为 object，方便后续扩展更多属性
 const SHOP_DATA = {
 	gacha: {
 		name: "抽卡",
@@ -130,42 +129,42 @@ const SHOP_DATA = {
 		goods: {
 			p_armor: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjV9|293f687f", // 5
+				price: "eyJkcmVhbURpYW4iOjUwfQ==|-152c4f3", // 50
 				skills: ["p_armor_effect"],
 			},
 			p_hp: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjEwfQ==|-152d3f7", // 10
+				price: "eyJkcmVhbURpYW4iOjEwMH0=|-2908173d", // 100
 				skills: ["p_hp_effect"],
 			},
 			p_drawCount: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjIwfQ==|-152d036", // 20
+				price: "eyJkcmVhbURpYW4iOjIwMH0=|-2907a2de", // 200
 				skills: ["p_drawCount_effect"],
 			},
 			p_distance_subtraction: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjIwfQ==|-152d036", // 20
+				price: "eyJkcmVhbURpYW4iOjIwMH0=|-2907a2de", // 200
 				skills: ["p_distance_subtraction_effect"],
 			},
 			p_distance_addition: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjMwfQ==|-152cc75", // 30
+				price: "eyJkcmVhbURpYW4iOjMwMH0=|-29072e7f", // 300
 				skills: ["p_distance_addition_effect"],
 			},
 			p_skill: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjUwfQ==|-152c4f3", // 50
+				price: "eyJkcmVhbURpYW4iOjUwMH0=|-290645c1", // 500
 				skills: ["p_skill_effect"],
 			},
 			p_damage: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjEwMH0=|-2908173d", // 100
+				price: "eyJkcmVhbURpYW4iOjEwMDB9|804c349", // 1000
 				skills: ["p_damage_effect"],
 			},
 			p_revive: {
 				repeatable: true,
-				price: "eyJkcmVhbURpYW4iOjIwMH0=|-2907a2de", // 200
+				price: "eyJkcmVhbURpYW4iOjIwMDB9|812daca", // 2000
 				skills: ["p_revive_effect"],
 			},
 		},
@@ -173,16 +172,16 @@ const SHOP_DATA = {
 	skins: {
 		name: "外观阁",
 		goods: {
-			"skin-1": { name: "秋岚·边框", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "淡金色主题边框。", image: SHOP_TEST_IMAGE, repeatable: false },
-			"skin-2": { name: "墨荷·头像框", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "水墨风头像框。", image: SHOP_TEST_IMAGE, repeatable: false },
-			"skin-3": { name: "星河·名片", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "闪烁粒子名片样式。", image: SHOP_TEST_IMAGE, repeatable: false },
+			"skin-1": { name: "秋岚·边框", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "测试", image: SHOP_TEST_IMAGE, repeatable: false },
+			"skin-2": { name: "墨荷·头像框", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "测试", image: SHOP_TEST_IMAGE, repeatable: false },
+			"skin-3": { name: "星河·名片", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "测试", image: SHOP_TEST_IMAGE, repeatable: false },
 		},
 	},
 	giftpack: {
 		name: "礼包区",
 		goods: {
-			"pack-1": { name: "新手礼包", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "基础资源组合包。", image: SHOP_TEST_IMAGE, repeatable: false },
-			"pack-2": { name: "进阶礼包", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "适合已熟悉玩法的玩家。", image: SHOP_TEST_IMAGE, repeatable: false },
+			"pack-1": { name: "新手礼包", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "测试", image: SHOP_TEST_IMAGE, repeatable: false },
+			"pack-2": { name: "进阶礼包", price: "eyJkcmVhbURpYW4iOjF9|293f6803", desc: "测试", image: SHOP_TEST_IMAGE, repeatable: false },
 		},
 	},
 };

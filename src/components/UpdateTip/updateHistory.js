@@ -2,7 +2,7 @@ export default [
 	{
 		version: "v1.2.0",
 		date: "2026-03-14",
-		changes: ["引入 Vue 重写部分代码"],
+		changes: ["引入 Vue 重写部分代码", "备战功能待定"],
 	},
 	{
 		version: "v1.1.0",

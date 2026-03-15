@@ -249,7 +249,7 @@ const assetHelpers = {
 		// 根据 showFooter 参数决定是否显示页脚
 		if (showFooter) {
 			const footer = createElement("div", { className: "jaf-intro-footer" });
-			const confirmBtn = createElement("button", { className: "jaf-intro-btn", text: "知道啦" });
+			const confirmBtn = createElement("button", { className: "jaf-game-btn", text: "知道啦" });
 			confirmBtn.type = "button";
 
 			footer.appendChild(confirmBtn);
@@ -533,7 +533,7 @@ const assetHelpers = {
 		}
 
 		const buyBtn = createElement("button", {
-			className: "jaf-intro-btn jaf-intro-action-btn",
+			className: "jaf-game-btn",
 			text: isOwned ? "已拥有" : "立刻购买",
 			attrs: { type: "button" },
 		});
@@ -731,7 +731,7 @@ const assetHelpers = {
 		const title = createElement("h3", { className: "jaf-gacha-result-title", text: `${poolName} · ${isTen ? "十连结果" : "单抽结果"}` });
 		const grid = createElement("div", { className: `jaf-gacha-result-grid${isTen ? " is-ten" : " is-single"}` });
 		const footer = createElement("div", { className: "jaf-gacha-result-footer" });
-		const closeBtn = createElement("button", { className: "jaf-intro-btn", text: "确定" });
+		const closeBtn = createElement("button", { className: "jaf-game-btn", text: "确定" });
 		closeBtn.type = "button";
 
 		results.forEach((item, index) => {

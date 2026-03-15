@@ -29,28 +29,6 @@ function copyDistToTargetPlugin(targetDir) {
 	};
 }
 
-// 删除 dist/extension 文件夹（如果存在）
-function removeDistExtensionPlugin() {
-	let config;
-	return {
-		name: "remove-dist-extension",
-		apply: "build",
-		configResolved(resolvedConfig) {
-			config = resolvedConfig;
-		},
-		async closeBundle() {
-			const distDir = resolve(config.root, config.build.outDir);
-			const extDir = resolve(distDir, "extension");
-			try {
-				await rm(extDir, { recursive: true, force: true });
-				console.log(`[remove-dist-extension] 已删除: ${extDir}`);
-			} catch (e) {
-				// ignore
-			}
-		},
-	};
-}
-
 export default defineConfig(({ command, mode }) => {
 	const isDev = command === "serve" || mode === "development";
 	const currentDir = fileURLToPath(new URL(".", import.meta.url));

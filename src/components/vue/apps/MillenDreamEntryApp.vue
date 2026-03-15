@@ -22,7 +22,7 @@
 						{{ chapter.title }}
 					</button>
 				</div>
-				<button class="jaf-close-btn" @click="closeChapter">关闭</button>
+				<button class="jaf-game-btn" @click="closeChapter">关闭</button>
 			</div>
 		</div>
 
@@ -44,8 +44,8 @@
 					</div>
 				</div>
 				<div class="jaf-level-wrapper">
-					<button class="jaf-close-btn" @click="backToChapter">返回章节</button>
-					<button class="jaf-close-btn" @click="openPrepare">备战</button>
+					<button class="jaf-game-btn" @click="backToChapter">返回章节</button>
+					<button class="jaf-game-btn" @click="openPrepare">备战</button>
 				</div>
 			</div>
 		</div>

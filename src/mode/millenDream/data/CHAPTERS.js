@@ -142,12 +142,68 @@ const CHAPTERS = {
 				},
 			},
 			c1l3: {
-				title: "鹿鸣溪谷",
-				intro: "溪谷地形曲折，合理分配行动顺序可大幅降低难度。",
-				hint: "中路桥口是关键点位，守住后压力会骤降。",
-				convo: {
-					playConvoBefore: [],
-					playConvoAfter: [],
+				title: "田野",
+				intro: "溪畔行尽入平野，稻浪翻风覆陇黄。曾逐蜻蜓穿稻海，满身稻香带斜阳。溪涧旁，便是一望无际的田野，稻穗在风里摇摇晃晃，翻出金色的浪涛。我总爱追着蜻蜓跑过田埂，踩碎一路的日光，累了就躺在田垄上，闻着稻香看云卷云舒。稻草人立在田中央，戴着破旧的草帽，像个沉默的卫士，守护着这片田野，也守护着我儿时的梦。晚风掠过稻浪，带走了蝉鸣，也带走了年少的喧嚣，只留稻香悠悠，漫过岁月长廊。",
+				hint: "敌人具有卡牌反弹，建议上场直伤角色。",
+				gameData: {
+					convo: {
+						playConvoBefore: [["溪畔行尽入平野，稻浪翻风覆陇黄。曾逐蜻蜓穿稻海，满身稻香带斜阳。溪涧旁，便是一望无际的田野，稻穗在风里摇摇晃晃，翻出金色的浪涛。我总爱追着蜻蜓跑过田埂，踩碎一路的日光，累了就躺在田垄上，闻着稻香看云卷云舒。稻草人立在田中央，戴着破旧的草帽，像个沉默的卫士，守护着这片田野，也守护着我儿时的梦。晚风掠过稻浪，带走了蝉鸣，也带走了年少的喧嚣，只留稻香悠悠，漫过岁月长廊。"]],
+						playConvoAfter: [["晚风裹着稻香，拂过发梢的温柔，一如儿时躺在田垄上的模样。那些追着蜻蜓跑过的田埂，那些伴着蝉鸣入睡的午后，从未被岁月吹散，都藏在每一株稻穗的纹路里。所谓归处，从不是远方的繁华，而是田野里的稻香阵阵，是稻草人沉默的守护，是年少时无忧无虑的时光。"]],
+					},
+					difficulty: {
+						1: {
+							bossInfo: {
+								id: "jaf_scarecrow",
+							},
+							global: {
+								loopFirst: 0,
+							},
+						},
+						2: {
+							bossInfo: {
+								id: "jaf_scarecrow",
+								minions: [
+									{
+										seat: 2,
+										name: "jaf_dragonfly",
+									},
+									{
+										seat: 6,
+										name: "jaf_dragonfly",
+									},
+								],
+							},
+							global: {
+								loopFirst: 0,
+							},
+						},
+						3: {
+							bossInfo: {
+								id: "jaf_scarecrow",
+								minions: [
+									{
+										seat: 2,
+										name: "jaf_dragonfly",
+									},
+									{
+										seat: 3,
+										name: "jaf_smallFish",
+									},
+									{
+										seat: 5,
+										name: "jaf_smallFish",
+									},
+									{
+										seat: 6,
+										name: "jaf_dragonfly",
+									},
+								],
+							},
+							global: {
+								loopFirst: 0,
+							},
+						},
+					},
 				},
 			},
 			c1l4: {

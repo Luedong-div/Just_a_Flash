@@ -129,7 +129,7 @@
 .jaf-game-btn {
 	font-family: "huangcao", "SimHei", "Microsoft YaHei", sans-serif;
 	width: 124px;
-	height: 54px;
+	height: 50px;
 	overflow: hidden;
 	border: 2px solid #c38e5a;
 	border-radius: 12px;
@@ -309,22 +309,6 @@
 	position: static !important;
 }
 
-.jaf-chapter-modal-content .jaf-close-btn {
-	width: auto;
-	min-width: 160px;
-	margin: 0.6rem auto 0;
-	position: static !important;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.jaf-level-modal-content .jaf-close-btn {
-	width: auto;
-	min-width: 140px;
-	margin: 0.6rem 5px;
-}
-
 .jaf-level-modal-content {
 	gap: 1rem;
 	padding: 1.4rem 1.2rem;
@@ -345,11 +329,6 @@
 	margin: 0;
 	font-size: 0.96rem;
 	color: #6b4e2d;
-}
-
-.jaf-level-header .jaf-close-btn {
-	padding: 0.55rem 1.25rem;
-	font-size: 0.95rem;
 }
 
 .jaf-level-viewport {
@@ -376,6 +355,8 @@
 .jaf-level-wrapper {
 	position: relative;
 	align-self: center;
+	display: flex;
+	gap: 1.2rem;
 }
 
 .jaf-level-viewport::-webkit-scrollbar {
@@ -1571,21 +1552,6 @@
 	white-space: pre-line;
 }
 
-.jaf-close-btn {
-	padding: 0.8rem 2rem;
-	background: #8b5a2b;
-	color: #fff;
-	border: none;
-	border-radius: 6px;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background 0.2s;
-}
-
-.jaf-close-btn:hover {
-	background: #a67c52;
-}
-
 /* 对话演出（章节内剧情） */
 .jaf-convo-dialog {
 	position: fixed !important;
@@ -1719,12 +1685,6 @@
 		justify-content: center;
 		align-items: center;
 		margin-bottom: 2.2rem;
-	}
-
-	.jaf-game-btn {
-		width: 132px;
-		height: 58px;
-		font-size: 1.05rem;
 	}
 
 	.jaf-level-modal-content {

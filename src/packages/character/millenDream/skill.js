@@ -53,6 +53,47 @@ const skills = {
 			trigger.getParent().excluded.add(player);
 		},
 	},
+	jaf_tricky: {
+		trigger: {
+			global: "useCardAfter",
+		},
+		filter(event, player) {
+			return event.player != player && event.targets?.includes(player);
+		},
+		forced: true,
+		async content(event, trigger, player) {
+			await player.useCard({ name: trigger.card.name, nature: trigger.card.nature }, trigger.player, false);
+		},
+	},
+	jaf_fly: {
+		forced: true,
+		mod: {
+			targetInRange(card, player, target) {
+				if (player.isPhaseUsing()) return true;
+			},
+		},
+		trigger: {
+			target: "useCardToTargeted",
+		},
+		async content(event, trigger, player) {
+			player.addMark("jaf_fly_count", 1, false);
+			player.addTempSkill("jaf_fly_count");
+		},
+		subSkill: {
+			count: {
+				intro: {
+					content: "本回合你计算与其他角色的距离+#",
+				},
+				onremove: true,
+				charlotte: true,
+				mod: {
+					globalTo(target, player, num) {
+						return num + player.countMark("jaf_fly_count");
+					},
+				},
+			},
+		},
+	},
 };
 
 export default skills;
