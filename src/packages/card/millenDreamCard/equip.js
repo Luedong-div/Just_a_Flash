@@ -72,6 +72,10 @@ const millenDreamCard_equipSkill = {
 const millenDreamCard_equipTranslate = {
 	jaf_stick: "木棍",
 	jaf_stick_info: `你的攻击将${extendGet.easyPoptip("jaf_grass1", "致残", "造成伤害后，目标体力值流失到一点。", "#FF7F00")}${extendGet.easyPoptip("jaf_grass2", "草木", "特指模式忽然而已中的各种植被。", "#60c70b")}。`,
+	jaf_stick_skill: "木棍",
+	get jaf_stick_skill_info() {
+		return this.jaf_stick_info;
+	},
 };
 
 export { millenDreamCard_equip, millenDreamCard_equipSkill, millenDreamCard_equipTranslate };

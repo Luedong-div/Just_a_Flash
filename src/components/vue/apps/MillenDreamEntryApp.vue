@@ -36,10 +36,7 @@
 						<div v-for="level in currentLevels" :key="level.id" class="jaf-level-card" :class="{ 'is-locked': !isLevelUnlocked(level.id) }" @click="clickLevel(level)" @contextmenu.prevent="ctx.showLevelIntroDialog(level)">
 							<img class="jaf-level-card-image" :src="getLevelImage(level)" :alt="`${level.title} 预览图`" draggable="false" />
 							<div class="jaf-level-card-title">{{ level.title }}</div>
-							<div class="jaf-level-card-intro">
-								{{ level.intro || "" }}
-								{{ isLevelUnlocked(level.id) ? "" : `（未解锁，当前进度：${formatProgressText(currentProgressId)}）` }}
-							</div>
+							<div class="jaf-level-card-intro" v-html="getLevelCardIntroHtml(level)"></div>
 						</div>
 					</div>
 				</div>
@@ -646,6 +643,15 @@ const currentLevels = computed(() => {
 });
 
 const isLevelUnlocked = levelId => isLevelUnlockedByProgress(levelId, currentProgressId.value);
+
+// 关卡简洁介绍文本，未解锁时附加当前进度提示
+const getLevelCardIntroHtml = level => {
+	const introHtml = String(level?.intro || "");
+	if (isLevelUnlocked(level?.id)) return introHtml;
+	const progressText = formatProgressText(currentProgressId.value);
+	const lockedTip = `<span class="jaf-level-locked-tip">（未解锁，当前进度：${progressText}）</span>`;
+	return introHtml ? `${introHtml}<br/>${lockedTip}` : lockedTip;
+};
 
 const ownedTreasures = computed(() => {
 	version.value;
