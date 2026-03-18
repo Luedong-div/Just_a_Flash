@@ -640,13 +640,15 @@ export interface UnitInfo {
 	 */
 	id: string;
 	/** 初始化卡槽集合 */
-	cards: CardZones;
+	cards?: CardZones;
+	/** 座位布局 dataset，从 0 开始 */
+	seat?: number;
 	/** 额外技能列表 */
-	skills: string[];
+	skills?: string[];
 	/** 额外属性扩展 */
-	expand: ExpandProps;
+	expand?: ExpandProps;
 	/** 随从/小怪列表 */
-	minions: Minion[];
+	minions?: Minion[];
 }
 
 export interface ItemProb {
@@ -658,8 +660,8 @@ export interface ItemProb {
 }
 
 export interface LevelGlobal {
-	/** 首个出手角色的 dataset 索引（从 0 开始），默认为 4 */
-	loopFirst?: number;
+	/** 首个出手角色的 dataset 索引，或者返回该索引的函数 */
+	loopFirst?: number | (() => number);
 	/** 替换初始摸牌函数 */
 	gameDraw?: (player: any) => number;
 	/** 游戏布局后执行函数 */

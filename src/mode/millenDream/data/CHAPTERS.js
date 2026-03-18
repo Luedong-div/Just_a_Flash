@@ -1,5 +1,29 @@
 import { decryptAndVerifyConfig } from "../../../components/polyfill.js";
 
+const preset = {
+	/**
+	 * 预设的 boss 摸牌 8 张
+	 * @param {*} player
+	 * @returns {number}
+	 */
+	gameDraw8(player) {
+		return player == game.boss ? 8 : 4;
+	},
+	/**
+	 * 预设的首个出手角色为玩家自己
+	 * @returns
+	 */
+	loopFirstMe() {
+		return Number(game.me.dataset.position) || 0;
+	},
+	/**
+	 * 预设的首个出手角色随机
+	 */
+	loopFirstRandom() {
+		return Number(game.players.randomGet().dataset.position) || 0;
+	},
+};
+
 /** @type {import('../../../../types/CHAPTERS.js').ChaptersConfig} */
 const CHAPTERS = {
 	c1: {
@@ -74,10 +98,7 @@ const CHAPTERS = {
 								],
 							},
 							global: {
-								loopFirst: 4,
-								gameDraw(player) {
-									return player == game.boss ? 8 : 4;
-								},
+								gameDraw: preset.gameDraw8,
 							},
 						},
 					},
@@ -145,10 +166,7 @@ const CHAPTERS = {
 								],
 							},
 							global: {
-								loopFirst: 4,
-								gameDraw(player) {
-									return player == game.boss ? 8 : 4;
-								},
+								gameDraw: preset.gameDraw8,
 							},
 						},
 					},
@@ -242,7 +260,7 @@ const CHAPTERS = {
 			c1l4: {
 				title: "后山",
 				intro: "后山有条荒径，曲曲折折，隐在深草里。坡上曾有个山洞，是人工掘的，祖父说早年用来烧瓦。到我认得路时，洞口早已被野藤覆满，黑黢黢的，像岁月忘了合上的一只眼。<br/>祖父便在这空旷里放羊。他用一根细长的竹棍，有时点地，有时遥指。清晨，将那头最沉稳的公羊，用麻绳松松系在坡地中央的木桩上。羊群便围着它，安然地散开，啃食着曾长过稻谷的野地。日头西斜时，收拢便极便宜。<br/>他并非沉默的人。会指着羊群，说哪只贪吃，哪只护崽。等羊儿趴下反刍，他便朝坡下使个眼色，说：“逛一圈去。”<br/>用竹棍拨开草，往山坳深处走。寻那眼旧泉。水从石缝渗出，积在石洼里，清亮亮的。他先俯身，掬一捧喝了，喉结滚动。然后让开。接着，另一双手也俯下去，沁凉与清甜便润了喉。只听见满足的叹息，和远处羊群一声悠长的“咩——”。<br/>然后回去，解开绳子。头羊便自觉走在前面，领着那片灰白的云，慢悠悠飘向山下。细长的竹棍在祖父手里，随着步子，一下一下，轻轻晃着。影子被夕阳拉得很长，和另一道小小的影子，叠在一起，融在回家的路上。",
-				hint: "注意地形伏位与隐蔽单位，优先清理扰乱节奏的小单位。",
+				hint: "敌人可以印【乐不思蜀】，建议角色自带免控或者可以转换【无懈可击】。",
 				gameData: {
 					convo: {
 						playConvoBefore: [
@@ -261,7 +279,7 @@ const CHAPTERS = {
 					difficulty: {
 						1: {
 							bossInfo: {
-								id: "jaf_scarecrow",
+								id: "jaf_blackGoat",
 							},
 							global: {
 								loopFirst: 0,
@@ -269,15 +287,12 @@ const CHAPTERS = {
 						},
 						2: {
 							bossInfo: {
-								id: "jaf_scarecrow",
+								id: "jaf_blackGoat",
+								seat: 3,
 								minions: [
 									{
-										seat: 2,
-										name: "jaf_dragonfly",
-									},
-									{
-										seat: 6,
-										name: "jaf_dragonfly",
+										seat: 5,
+										name: "jaf_blackGoat",
 									},
 								],
 							},
@@ -287,38 +302,32 @@ const CHAPTERS = {
 						},
 						3: {
 							bossInfo: {
-								id: "jaf_scarecrow",
+								id: "jaf_blackGoat",
+								seat: 3,
 								expand: {
-									maxHp: 4,
+									hp: 6,
 									hujia: 2,
 								},
 								minions: [
 									{
-										seat: 2,
-										name: "jaf_dragonfly",
-									},
-									{
-										seat: 3,
-										name: "jaf_smallFish",
-									},
-									{
 										seat: 5,
-										name: "jaf_smallFish",
-									},
-									{
-										seat: 6,
-										name: "jaf_dragonfly",
+										name: "jaf_blackGoat",
+										expand: {
+											hp: 6,
+											hujia: 2,
+										},
 									},
 								],
 							},
 							global: {
-								loopFirst: 0,
+								gameDraw: preset.gameDraw8,
+								loopFirst: preset.loopFirstRandom,
 							},
 						},
 					},
 				},
 				reward: {
-					currency: "eyJtZW1vcnlaaHUiOls1LDIwXSwiZHJlYW1EaWFuIjpbMSwyXSwiamlhbmdGdSI6WzcsMTJdfQ==|-1dc2972a",
+					currency: "eyJtZW1vcnlaaHUiOlsxMCwzMF0sImRyZWFtRGlhbiI6WzEsM10sImppYW5nRnUiOlsxMCwxOF19|-394f7d4a",
 				},
 			},
 			c1l5: {

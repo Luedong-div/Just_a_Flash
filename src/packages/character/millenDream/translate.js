@@ -18,4 +18,7 @@ export default {
 	jaf_dragonfly: "蜻蜓",
 	jaf_fly: "飞行",
 	jaf_fly_info: "锁定技，回合内，你使用牌无距离限制；回合外，当你成为一张牌的目标后，本回合其他角色计算与你距离+1。",
+	jaf_blackGoat: "黑山羊",
+	jaf_ruminate: "反刍",
+	jaf_ruminate_info: "锁定技，出牌阶段，你失去一点体力，然后获得一张【乐不思蜀】和【桃】。",
 };

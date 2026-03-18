@@ -86,5 +86,5 @@ export { encryptConfig, decryptAndVerifyConfig, ensureCheatButtonWatcherInstalle
 
 // { memoryZhu: [ 5, 20 ], dreamDian: [1, 2], jiangFu: [7, 12] }
 
-console.log(encryptConfig({ memoryZhu: [5, 20], dreamDian: [1, 2], jiangFu: [7, 12] }, "shaonian"));
-// console.log(decryptAndVerifyConfig("eyJkcmVhbURpYW4iOjV9|293f687f", "shaonian"));
+// console.log(encryptConfig({ memoryZhu: [10, 30], dreamDian: [1, 3], jiangFu: [10, 18] }, "shaonian"));
+// console.log(decryptAndVerifyConfig("eyJtZW1vcnlaaHUiOls1LDIwXSwiZHJlYW1EaWFuIjpbMSwyXSwiamlhbmdGdSI6WzcsMTJdfQ==|-1dc2972a", "shaonian"));

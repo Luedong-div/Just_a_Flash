@@ -146,7 +146,7 @@ export default async function (event, trigger, player) {
 	boss.setIdentity("zhu");
 	boss.identity = "zhu";
 	ui.arena.appendChild(boss);
-	boss.dataset.position = 4;
+	boss.dataset.position = levelInfo.bossInfo?.seat || 4;
 	game.players.add(boss);
 
 	// 开始游戏
@@ -214,8 +214,10 @@ export default async function (event, trigger, player) {
 		await replaceHandCards(event, game.me.getCards("h"));
 	}
 	let firstPlayer;
-	if (typeof levelInfo?.global?.loopFirst === "number") {
-		firstPlayer = game.findPlayer(i => Number(i.dataset.position) == levelInfo.global.loopFirst) || i == game.boss;
+	if (typeof levelInfo?.global?.loopFirst === "number" || typeof levelInfo?.global?.loopFirst === "function") {
+		const loopFirst = levelInfo.global.loopFirst;
+		const number = typeof loopFirst === "function" ? loopFirst() : loopFirst;
+		firstPlayer = game.findPlayer(i => Number(i.dataset.position) == number) || i == game.boss;
 	} else {
 		firstPlayer = game.boss;
 	}

@@ -94,6 +94,20 @@ const skills = {
 			},
 		},
 	},
+	jaf_ruminate: {
+		trigger: {
+			player: "phaseUseBegin",
+		},
+		forced: true,
+		async content(event, trigger, player) {
+			await player.loseHp(1);
+			await player.changeHujia(1);
+			const cards = ["lebu", "tao"].map(name => get.cardPile(name)).filter(Boolean);
+			if (cards.length) {
+				await player.gain(cards, "draw");
+			}
+		},
+	},
 };
 
 export default skills;
