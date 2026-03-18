@@ -306,6 +306,7 @@ const CHAPTERS = {
 								seat: 3,
 								expand: {
 									hp: 6,
+									maxHp: 6,
 									hujia: 2,
 								},
 								minions: [
@@ -314,6 +315,7 @@ const CHAPTERS = {
 										name: "jaf_blackGoat",
 										expand: {
 											hp: 6,
+											maxHp: 6,
 											hujia: 2,
 										},
 									},
