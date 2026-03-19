@@ -102,15 +102,10 @@ export default {
 				if (!isNarration) {
 					const avatarWrap = ui.create.div(".jaf-convo-avatar-wrap", dialog);
 					const avatar = ui.create.div(".avatar.jaf-convo-avatar", avatarWrap);
-					try {
-						avatar.setBackground(speakerId, "character");
-					} catch {
-						avatarWrap.classList.add("is-fallback");
-						avatarWrap.textContent = speakerName || "？";
-					}
+					avatar.setBackground(speakerId, "character");
 				}
 
-				const next = dialog.addText(`<div class="jaf-convo-content">${isNarration ? "" : `<div class="jaf-convo-speaker">${speakerName}</div>`}<div class="jaf-convo-text">${dialogText.replaceAll("\n", "<br>")}</div></div>`, false);
+				const next = dialog.addText(`<div class="jaf-convo-content">${isNarration ? "" : `<div class="jaf-convo-speaker">${speakerName}</div>`}<div class="jaf-convo-text">${dialogText}</div></div>`, false);
 
 				next.style.height = "25%";
 				next.content.style.height = "100%";

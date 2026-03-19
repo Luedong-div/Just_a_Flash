@@ -1545,7 +1545,6 @@
 }
 
 .jaf-convo-avatar-wrap {
-	position: absolute;
 	left: 1rem;
 	top: 50%;
 	width: 132px;
@@ -1554,23 +1553,7 @@
 	border-radius: 10px;
 	border: 2px solid #c5945f;
 	overflow: hidden;
-	background: linear-gradient(180deg, #f6e6cf 0%, #e8cca4 100%);
 	box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: "SimHei", "Microsoft YaHei", sans-serif;
-	font-weight: 700;
-	color: #74411a;
-
-	user-select: none;
-}
-
-.jaf-convo-avatar-wrap.is-fallback {
-	padding: 0.45rem;
-	text-align: center;
-	line-height: 1.4;
-	word-break: break-word;
 }
 
 .jaf-convo-avatar {
@@ -1586,7 +1569,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.42rem;
-
 	line-height: 1.68;
 	max-height: 34vh;
 	overflow: auto;
@@ -1596,20 +1578,13 @@
 
 .jaf-convo-speaker {
 	font-family: "huangcao", "SimHei", "Microsoft YaHei", sans-serif;
-	font-size: clamp(1.05rem, 2.6vw, 1.35rem);
 	font-weight: 700;
 	color: #7c4318;
 	text-shadow: 1px 1px 0 #f8ddba;
-	line-height: 1.25;
 }
 
 .jaf-convo-text {
 	font-family: "yuanli", "SimHei", "Microsoft YaHei", sans-serif;
-	font-size: clamp(0.94rem, 2.1vw, 1.06rem);
-	word-break: break-word;
-	white-space: normal;
-
-	text-align: left;
 }
 
 .jaf-convo-dialog.is-narration .jaf-convo-content {
@@ -1793,13 +1768,6 @@
 
 	.jaf-convo-dialog.is-narration {
 		padding-left: 0.72rem;
-	}
-
-	.jaf-convo-avatar-wrap {
-		left: 0.72rem;
-		width: 78px;
-		height: 106px;
-		border-radius: 8px;
 	}
 
 	.jaf-convo-content {
