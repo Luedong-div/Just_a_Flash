@@ -37,106 +37,6 @@ function createElement(tagName, { className, text, html, attrs } = {}) {
 	return element;
 }
 
-/**
- * 解析关卡进度 ID（如 c2l3）
- * @param {string} progressId
- * @returns {{chapter: number, level: number} | null}
- */
-function parseProgressId(progressId) {
-	if (typeof progressId !== "string") return null;
-	const match = /^c(\d+)l(\d+)$/i.exec(progressId.trim());
-	if (!match) return null;
-	const chapter = Number(match[1]);
-	const level = Number(match[2]);
-	if (!Number.isInteger(chapter) || !Number.isInteger(level) || chapter < 1 || level < 1) {
-		return null;
-	}
-	return { chapter, level };
-}
-/**
- * 规范化进度 ID，非法值回退到默认进度
- * @param {string} progressId
- * @returns {string}
- */
-function normalizeProgressId(progressId) {
-	const parsed = parseProgressId(progressId);
-	if (!parsed) return "c1l1";
-	return `c${parsed.chapter}l${parsed.level}`;
-}
-/**
- * 关卡是否已解锁（按“章节优先、章内按关卡”比较）
- * @param {string} levelId
- * @param {string} progressId
- * @returns {boolean}
- */
-function isLevelUnlockedByProgress(levelId, progressId) {
-	const levelParsed = parseProgressId(levelId);
-	// 对非标准 ID（如占位关卡）保持兼容，不强制锁定
-	if (!levelParsed) return true;
-
-	const progressParsed = parseProgressId(progressId) || parseProgressId("c1l1");
-	if (!progressParsed) return true;
-
-	if (levelParsed.chapter < progressParsed.chapter) return true;
-	if (levelParsed.chapter > progressParsed.chapter) return false;
-	return levelParsed.level <= progressParsed.level;
-}
-/**
- * 根据当前进度 ID 获取下一个关卡的 ID，按章节和关卡顺序查找，兼容非标准 ID
- * @param {string} currentProgressId
- * @returns {string|null}
- */
-function getNextProgressId(currentProgressId) {
-	if (!CHAPTERS || typeof CHAPTERS !== "object") return null;
-
-	// 遍历所有章节查找当前关卡
-	const chapterIds = Object.keys(CHAPTERS).sort();
-	for (let ci = 0; ci < chapterIds.length; ci++) {
-		const chapterId = chapterIds[ci];
-		const chapter = CHAPTERS[chapterId];
-		if (!chapter || !chapter.levels) continue;
-
-		const levelIds = Object.keys(chapter.levels).sort();
-		for (let li = 0; li < levelIds.length; li++) {
-			const levelId = levelIds[li];
-			if (String(levelId) === String(currentProgressId)) {
-				// 找到当前关卡，返回下一关
-				if (li + 1 < levelIds.length) return levelIds[li + 1];
-
-				// 当前章节没有下一关，找下一章的第一关
-				for (let nc = ci + 1; nc < chapterIds.length; nc++) {
-					const nextChapter = CHAPTERS[chapterIds[nc]];
-					if (!nextChapter || !nextChapter.levels) continue;
-					const nextLevelIds = Object.keys(nextChapter.levels).sort();
-					if (nextLevelIds.length > 0) return nextLevelIds[0];
-				}
-				return null;
-			}
-		}
-	}
-
-	// 如果没找到，尝试通过解析ID查找
-	const parsed = parseProgressId(currentProgressId);
-	if (!parsed) return null;
-	const { chapter: ch, level: lv } = parsed;
-	const chapterId = `c${ch}`;
-	const chapter = CHAPTERS[chapterId];
-	if (!chapter || !chapter.levels) return null;
-
-	const levelIds = Object.keys(chapter.levels).sort();
-	const nextLevelId = `c${ch}l${lv + 1}`;
-	if (levelIds.includes(nextLevelId)) return nextLevelId;
-
-	// 找下一章的第一关
-	const nextChapterId = `c${ch + 1}`;
-	const nextChapter = CHAPTERS[nextChapterId];
-	if (nextChapter && nextChapter.levels) {
-		const nextLevelIds = Object.keys(nextChapter.levels).sort();
-		if (nextLevelIds.length > 0) return nextLevelIds[0];
-	}
-	return null;
-}
-
 const assetHelpers = {
 	/**
 	 * 存档函数
@@ -833,9 +733,9 @@ function ensureGameData() {
 			progress: "c1l1",
 			// 货币
 			currency: {
-				memoryZhu: 0,
-				dreamDian: 0,
-				jiangFu: 0,
+				memoryZhu: 999,
+				dreamDian: 999,
+				jiangFu: 999,
 			},
 			// 拥有的宝物
 			treasure: [],
@@ -881,11 +781,8 @@ function mountEntry(onStartGame) {
 	const root = createElement("div", { className: "jaf-entry-root", attrs: { id: "jaf-entry-root" } });
 	const vueHost = root;
 
-	let currentChallengeMeta = {
-		chapter: null,
-		level: null,
-		difficulty: 1,
-	};
+	// 元信息（当前挑战的章节、关卡、难度等，用于结算时发放奖励和解锁下一关）
+	let currentChallengeMeta = {};
 
 	root._disposeVueApp = mountMillenDreamEntryVueApp(vueHost, {
 		onDialogApiReady: api => {
@@ -918,6 +815,7 @@ function mountEntry(onStartGame) {
 					reward: (CHAPTERS?.[startInfo?.chapterId]?.levels || {})[startInfo?.levelId]?.reward || null,
 				},
 				difficulty: Number(startInfo?.difficulty) || 1,
+				nextProgressId: startInfo?.nextProgressId,
 			};
 			onStartGame?.(startInfo);
 			closeStartBeforeUIInternal({ immediate: true, increaseToken: true });
@@ -967,13 +865,9 @@ function mountEntry(onStartGame) {
 				}
 			}
 
-			const next = getNextProgressId(currentChallengeMeta?.level?.id);
+			const next = currentChallengeMeta?.nextProgressId;
 			if (next) {
-				// 只有在下一关进度大于当前进度时才更新，防止打低级关卡导致进度降级
-				const currentProgress = gameData.progress || "c1l1";
-				if (!isLevelUnlockedByProgress(next, currentProgress)) {
-					gameData.progress = normalizeProgressId(next);
-				}
+				gameData.progress = next;
 			}
 			await assetHelpers.saveGameData();
 

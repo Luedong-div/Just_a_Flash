@@ -810,6 +810,8 @@ function closeChallenge() {
 function startChallenge() {
 	const chapter = selectedChapter.value;
 	const level = selectedLevel.value;
+	const next = getNextProgressId(level?.id);
+	const nextProgressId = next ? normalizeProgressId(next) : null;
 	emit("start-game", {
 		started: true,
 		difficulty: difficulty.value,
@@ -818,7 +820,7 @@ function startChallenge() {
 		levelId: level?.id ?? null,
 		levelTitle: level?.title ?? null,
 		gameData: level?.gameData ?? null,
-		nextProgressId: getNextProgressId(level?.id) || null,
+		nextProgressId,
 	});
 }
 

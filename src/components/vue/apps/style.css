@@ -1295,13 +1295,11 @@
 .jaf-challenge-desc {
 	margin: 0;
 	font-size: 0.95rem;
-	line-height: 1.7;
+	line-height: 1.5;
 	color: #6a4320;
 	height: 18vw;
 	overflow-y: auto;
 	overflow-x: hidden;
-	padding-right: 4px;
-	word-break: break-word;
 }
 
 .jaf-challenge-difficulty-label {
@@ -1726,10 +1724,6 @@
 
 	.jaf-challenge-panel {
 		gap: 0.7rem;
-	}
-
-	.jaf-challenge-desc {
-		height: min(24vh, 170px);
 	}
 
 	.jaf-difficulty-star {
